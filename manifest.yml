@@ -3,5 +3,5 @@ applications:
 - services:
   - myMicroservicesCloudant
 name: MicroservicesCatalogAPI
-memory: 512m
+memory: 256m
 instances: 1
