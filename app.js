@@ -21,5 +21,5 @@ app.use(express.static(path.join(__dirname, 'www')));
 // Require the API routes.
 require("./routes/routes.js")(app);
 
-app.listen(8888, appEnv.bind);
-console.log('App started on ' + appEnv.bind + ':' + 8888);
+app.listen(appEnv.port, appEnv.bind);
+console.log('App started on ' + appEnv.bind + ':' + appEnv.port);
