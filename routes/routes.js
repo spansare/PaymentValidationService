@@ -5,7 +5,7 @@ var appEnv = cfenv.getAppEnv();
 var cloudantUser = "";
 var cloudantPass = "";
 
-var cloudantCreds = appEnv.getService("myMicroservicesCloudant");
+/*var cloudantCreds = appEnv.getService("myMicroservicesCloudant");
 cloudantUser = cloudantCreds.credentials.username;
 cloudantPass = cloudantCreds.credentials.password;
 
@@ -37,50 +37,54 @@ function populateDB() {
 		});
 	}   
 }
+*/
 
 // API Routes
 module.exports = function (app) {
 // Create an item
-app.post("/items", function(req, res) {
+app.post("/validatePayment", function(req, res) {
 	var data = req.body;
 
 	if(Object.keys(data).length === 0){
 		return res.json({msg: "Body was empty."});
 	}
+	else {
+		return res.json({msg: "Payment executed successfully"});
+	}
 
-	db.insert(data, function (err, body, headers) {
+	/*db.insert(data, function (err, body, headers) {
 		if (err) {
 			return res.json({msg: "Error on insert. " + err});
 		}
 		else {
 			return res.json({msg: "Successfully created item"});
 		}
-	});
+	}); */
 });
 
 // Get an item by ID
 app.get("/items/:id", function(req, res) {
 	var id = req.params.id;
-	db.get(id, function(err, body) {
+	/*db.get(id, function(err, body) {
 		if (err){
 			return res.json({msg: "Error: could not find item: " + id + ". " + err});
 		}
 		else{
 			return res.json(body);
 		}
-	});
+	}); */
 });
 
 // Get all items
 app.get("/items", function(req, res) {
-	db.list({include_docs: true}, function (err, body, headers) {
+	/*db.list({include_docs: true}, function (err, body, headers) {
 		if (err) {
 			return res.json({msg: "Error getting all items. " + err});
 		}
 		else{
 			return res.json(body);
 		}
-	});
+	}); */
 });
 
 // Update an item by ID
@@ -90,7 +94,7 @@ app.put("/items/:id", function(req, res) {
 	if(Object.keys(data).length === 0){
 		return res.json({msg: "Body was empty."});
 	}
-	db.get(id, function (err, body) {
+	/*db.get(id, function (err, body) {
 		if(err){
 			return res.json({msg: "Error getting item: " + id + " for update. " + err});
 		}
@@ -105,13 +109,13 @@ app.put("/items/:id", function(req, res) {
 				}
 			});
 		}
-	});
+	}); */
 });
 
 // Delete an item by ID
 app.delete("/items/:id", function(req, res){
 	var id = req.params.id;
-	db.get(id, function(err, body) {
+	/*db.get(id, function(err, body) {
 		if (err){
 			return res.json({msg: "Error retrieving revision for item id: " + id + ". " + err});
 		}
@@ -125,7 +129,7 @@ app.delete("/items/:id", function(req, res){
 				}
 			});
 		}
-	});  
+	});  */
 });
 
 };
