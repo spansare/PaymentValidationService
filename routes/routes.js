@@ -46,7 +46,7 @@ app.post("/validatePayment", function(req, res) {
 	var data = req.body;
 	var sender = data.sender;
 	var receiver = data.receiver;
-	var ammount = data.amount;
+	var amount = data.amount;
 	
 	if(Object.keys(data).length === 0){
 		return res.json({msg: "Body was empty."});
