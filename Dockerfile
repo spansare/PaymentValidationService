@@ -7,8 +7,19 @@ ENV PORT=3000
 EXPOSE 3000
 ENV NODE_ENV production
 
-RUN git clone https://github.com/spansare/Microservices-Catalog
-WORKDIR Microservices-Catalog
+RUN curl -sSL https://github.com/amalgam8/amalgam8/releases/download/v0.4.0/a8sidecar.sh | sh
+
+ENV A8_SERVICE=payment_validation_service:v1
+ENV A8_ENDPOINT_PORT=3000
+ENV A8_ENDPOINT_TYPE=http
+ENV A8_REGISTRY_URL=http://payment-a8-registry.mybluemix.net
+ENV A8_REGISTRY_POLL=60s
+ENV A8_CONTROLLER_URL=http://payment-a8-controller.mybluemix.net
+ENV A8_CONTROLLER_POLL=60s
+ENV A8_LOG=enable_log
+
+RUN git clone https://github.com/spansare/PaymentValidationService
+WORKDIR PaymentValidationService
 
 #Install any necessary requirements from package.json
 RUN npm install
@@ -17,5 +28,5 @@ RUN npm install
 #IBM Containers networking is finished before the app starts. 
 CMD (sleep 60; npm start)
 
-#Start the Personal Insight app. 
-CMD ["node", "app.js"]
+#Start the app. 
+ENTRYPOINT ["a8sidecar", "--register", "--supervise", "node", "app.js"]
