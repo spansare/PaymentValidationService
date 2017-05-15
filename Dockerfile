@@ -7,7 +7,9 @@ ENV PORT=3000
 EXPOSE 3000
 ENV NODE_ENV production
 
-RUN curl -sSL https://github.com/amalgam8/amalgam8/releases/download/v0.4.0/a8sidecar.sh | sh
+RUN sudo apt-get install -y wget
+
+RUN wget -qO- https://github.com/amalgam8/amalgam8/releases/download/v0.4.2/a8sidecar.sh | sh
 
 ENV A8_SERVICE=payment_validation_service:v1
 ENV A8_ENDPOINT_PORT=3000
