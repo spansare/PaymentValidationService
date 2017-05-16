@@ -1,13 +1,13 @@
 //Require the dev-dependencies
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../app');
-let should = chai.should();
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var server = require('../app');
+var should = chai.should();
 chai.use(chaiHttp);
 
 describe('/POST validatePayment', () => {
     it('it should validate payment request', (done) => {
-      let data = {
+      var data = {
           sender: "John",
           receiver: "Mike",
           amount: 100
