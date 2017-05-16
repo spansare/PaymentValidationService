@@ -1,5 +1,5 @@
 {
-  "name": "Microservices_CatalogAPI",
+  "name": "PaymentValidationService",
   "version": "0.0.1",
   "description": "A microservices sample catalog API.",
   "scripts": {
