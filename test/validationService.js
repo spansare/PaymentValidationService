@@ -12,7 +12,7 @@ describe('/POST validatePayment', function() {
           receiver: "Mike",
           amount: 100
       }
-      chai.request("http://payment-validation-service.mybluemix.net")
+      chai.request("https://payment-service-gateway.mybluemix.net/payment_validation_service")
           .post('/validatePayment')
           .send(data)
           .end(function(err, res) {
