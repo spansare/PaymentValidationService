@@ -43,15 +43,21 @@ function populateDB() {
 module.exports = function (app) {
 // Create an item
 app.post("/validatePayment", function(req, res) {
+	
 	var data = req.body;
 	var sender = data.sender;
 	var receiver = data.receiver;
 	var amount = data.amount;
 	
+	console.log("Business Log : Validate Payment request received from : " + sender);
+	console.log("Application Log : Validating Payment request");
+	
 	if(Object.keys(data).length === 0){
+		console.error("Application Log : Invalid input parameters");
 		return res.json({msg: "Body was empty."});
 	}
 	else {
+		console.log("Application Log : Payment of $" + amount + " from " + sender + " to " + receiver + " validated successfully!!!")
 		return res.json({msg: "Payment of $" + amount + " from " + sender + " to " + receiver + " validated successfully!!!"});
 	}
 
