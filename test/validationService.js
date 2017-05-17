@@ -6,7 +6,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 describe('/POST validatePayment', function() {
-    it('it should validate payment request', (done) => {
+    it('it should validate payment request', function(done) {
       var data = {
           sender: "John",
           receiver: "Mike",
