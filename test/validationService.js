@@ -15,7 +15,7 @@ describe('/POST validatePayment', function() {
       chai.request("http://payment-validation-service.mybluemix.net")
           .post('/validatePayment')
           .send(data)
-          .end((err, res) => {
+          .end(function(err, res) {
               res.should.have.status(200);
               //res.body.should.be.a('object');
         	  console.log(res.body);
