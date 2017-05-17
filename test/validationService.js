@@ -5,7 +5,7 @@ var server = require('../app');
 var should = chai.should();
 chai.use(chaiHttp);
 
-describe('/POST validatePayment', () => {
+describe('/POST validatePayment', function() {
     it('it should validate payment request', (done) => {
       var data = {
           sender: "John",
