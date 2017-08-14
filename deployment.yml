@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     # the port that this service should serve on
-    - port: 80
+    - port: 3000
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app: payment-validation-app
@@ -30,7 +30,7 @@ spec:
         # for local development against minikube registry
         #imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         volumeMounts:
         - mountPath: /opt/service-bind
           name: service-bind-volume
